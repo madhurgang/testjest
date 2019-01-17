@@ -1,28 +1,31 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
-class App extends Component {
+const Main = (props) => {
+  return (
+    <div>
+      <button onClick={() => alert('clicked')}>Hi, I am {props.name}</button>
+    </div>
+  )
+}
+
+export default class App extends Component {
+
+  state = {
+    names: ['amit', 'abh', 'bach', 'chan']
+  }
+
   render() {
     return (
-      <div className="App">
+      <div className="MyApp">
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+          {
+            this.state.names.map(
+              (item, i) => <Main name={item} key={i} />
+            )
+          }
         </header>
       </div>
     );
   }
 }
-
-export default App;
